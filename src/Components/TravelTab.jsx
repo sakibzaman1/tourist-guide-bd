@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import overview from '../assets/videos/overview.mp4'
+import TourPackageCard from "./TourPackageCard";
+import TravelGuide from "./TravelGuide";
 
 const TravelTab = () => {
+
+  const [tourPackages, setTourPackages] = useState([]);
+
+  useEffect(()=> {
+    fetch(`/tourPackages.json`)
+    .then(res=> res.json())
+    .then(data=> setTourPackages(data))
+  },[])
+
+
   return (
     <div className="mt-20">
       <Tabs>
@@ -26,10 +38,42 @@ const TravelTab = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10">
+            {
+              tourPackages.slice(0,3).map(tourPackage=> <TourPackageCard key={tourPackage.id} tourPackage={tourPackage}></TourPackageCard>)
+            }
+          </div>
+
+            <button className="bg-gradient-to-r from-green-400 to-green-600 text-white rounded-full px-2 text-xl mt-10">All Packages</button>
+
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          <div>
+
+
+          <div className="overflow-x-auto">
+            <table className="table">
+            <thead>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" className="checkbox" />
+                </label>
+              </th>
+              <th>Name</th>
+              <th>Experience</th>
+              <th>Language</th>
+              <th></th>
+            </tr>
+          </thead>
+          {
+              tourPackages.map(tourPackage=> <TravelGuide key={tourPackage.id} tourPackage={tourPackage}></TravelGuide>)
+            }
+            </table>
+          </div>
+
+          
+          </div>
         </TabPanel>
       </Tabs>
     </div>

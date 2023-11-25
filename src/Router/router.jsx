@@ -5,6 +5,7 @@ import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
 import './router.css'
 import Register from '../Pages/Register/Register';
+import PackageDetails from '../Components/PackageDetails';
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/packageDetails/:id',
+                element: <PackageDetails></PackageDetails>,
+                loader: ()=> fetch(`/tourPackages.json`)
             }
         ]
     }

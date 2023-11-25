@@ -1,71 +1,56 @@
-// import React, { useRef, useState } from 'react';
-// // Import Swiper React components
-// import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-// // Import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/effect-coverflow';
-// import 'swiper/css/pagination';
+const TourType = () => {
+  const [tourPackages, setTourPackages] = useState([]);
 
-// import './tourtype.css'
+  useEffect(() => {
+    fetch(`/tourPackages.json`)
+      .then((res) => res.json())
+      .then((data) => setTourPackages(data));
+  }, []);
 
-// // import required modules
-// import { EffectCoverflow, Pagination } from 'swiper/modules';
+  return (
 
 
-// const TourType = () => {
-//     return (
-//         <div> 
-//              <Swiper
-//         effect={'coverflow'}
-//         grabCursor={true}
-//         centeredSlides={true}
-//         slidesPerView={'auto'}
-//         initialSlide={2}
-//         coverflowEffect={{
-//           rotate: 50,
-//           stretch: 0,
-//           depth: 100,
-//           modifier: 1,
-//           slideShadows: true,
-//         }}
-//         pagination={true}
-//         modules={[EffectCoverflow, Pagination]}
-//         className="mySwiper"
-//       >
-//         <SwiperSlide className='mySwiperSlide'>
-//          <div className='relative'>
-//          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-//          <h1 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-5xl '>Hiking</h1>
-//          </div>
-//         </SwiperSlide>
-//         <SwiperSlide>
-//           <div className='relative'>
-//           <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-//           <h1 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-5xl '>Sports</h1>
-//           </div>
-//         </SwiperSlide>
-//         <SwiperSlide>
-//           <div className='relative'>
-//           <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-//           <h1 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-5xl '>Walking</h1>
-//           </div>
-//         </SwiperSlide>
-//         <SwiperSlide>
-//           <div className='relative'>
-//           <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-//           <h1 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-5xl '>AirRides</h1>
-//           </div>
-//         </SwiperSlide>
-//         <SwiperSlide>
-//           <div className='relative'>
-//           <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-//           <h1 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-5xl '>Wildlife</h1>
-//           </div>
-//         </SwiperSlide>
-//       </Swiper>
-//         </div>
-//     );
-// };
+    <div className="hero min-h-screen" style={{backgroundImage: 'url(https://i.ibb.co/hZqpjGt/bd.jpg)'}}>
+  <div className="hero-overlay bg-opacity-40"></div>
+  <h1 className="text-center text-3xl font-Ephesis text-white py-6">Find a Tour</h1>
+  <div className="grid grid-cols-4 gap-6 p-6">
+      {tourPackages.map((tour) => (
+        <div>
+         <Link>
+         <div className="card relative rounded-full">
+            <figure>
+              <img className="h-44 "
+                src={tour.image}
+                alt="Shoes"
+              />
+            </figure>
+            <div className="card-body absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <h2 className="card-title my-auto mx-auto text-white">{tour.tourType}</h2>
+            </div>
+          </div>
+         </Link>
+        </div>
+      ))}
+    </div>
+</div>
 
-// export default TourType;
+  
+  );
+};
+
+export default TourType;
+
+/* 
+https://i.ibb.co/19F3vrV/coxs-bazar.jpg
+https://i.ibb.co/58Wzh53/kuakata.jpg
+https://i.ibb.co/wgSywNc/rangamati.jpg
+https://i.ibb.co/DCk2G8f/sajek.jpg
+https://i.ibb.co/whSQMr2/sunamganj.jpg
+https://i.ibb.co/CvV3bzF/bagerhat.jpg
+https://i.ibb.co/XbJhDCy/bandarban.jpg
+https://i.ibb.co/0Chy2kx/barisal.jpg
+https://i.ibb.co/jZ2J75h/srimangal.jpg
+*/

@@ -1,0 +1,179 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/mzpqFR9/sundarban.jpg",
+      "tourType": "Adventure",
+      "tripTitle": "Explore the Sundarbans",
+      "price": "500",
+      "tourPlan": [
+        "Day 1: Arrival in Khulna",
+        "Day 2: Boat trip in the Sundarbans",
+        "Day 3: Wildlife Safari",
+        "Day 4: Departure"
+      ],
+      "aboutTour": "Experience the beauty of the world's largest mangrove forest and witness diverse wildlife.",
+      "tourGuides": [
+        {
+          "name": "Rahim Ahmed",
+          "experience": "5 years",
+          "language": "English, Bengali",
+          "guideImage": "https://i.ibb.co/rpv17sB/rahim-ahmed.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/rpwDVkf/dhaka.jpg",
+      "tourType": "Cultural",
+      "tripTitle": "Historical Wonders of Dhaka",
+      "price": "300",
+      "tourPlan": [
+        "Day 1: Arrival in Dhaka",
+        "Day 2: Visit historical landmarks",
+        "Day 3: Explore old Dhaka",
+        "Day 4: Departure"
+      ],
+      "aboutTour": "Immerse yourself in the rich cultural heritage of Bangladesh's capital city, Dhaka.",
+      "tourGuides": [
+        {
+          "name": "Farida Rahman",
+          "experience": "4 years",
+          "language": "English, Bengali",
+          "guideImage": "https://i.ibb.co/2SbShnG/farida-rahman.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/4RWNxF6/chittagong.jpg",
+      "tourType": "Nature",
+      "tripTitle": "Chittagong Hill Tracts Adventure",
+      "price": "700",
+      "tourPlan": [
+        "Day 1: Arrival in Chittagong",
+        "Day 2: Trekking in the hill tracts",
+        "Day 3: Visit tribal villages",
+        "Day 4: Departure"
+      ],
+      "aboutTour": "Discover the breathtaking landscapes and unique cultures of the Chittagong Hill Tracts.",
+      "tourGuides": [
+        {
+          "name": "Siddharth Chakma",
+          "experience": "6 years",
+          "language": "English, Bengali, Chakma",
+          "guideImage": "https://i.ibb.co/rGqN1Mb/siddharth-chakma.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co/19F3vrV/coxs-bazar.jpg",
+      "tourType": "Beach",
+      "tripTitle": "Cox's Bazar Relaxation",
+      "price": "$800",
+      "tourPlan": [
+        "Day 1: Arrival in Cox's Bazar",
+        "Day 2: Relax on the world's longest beach",
+        "Day 3: Explore Himchari National Park",
+        "Day 4: Departure"
+      ],
+      "aboutTour": "Unwind on the pristine shores of Cox's Bazar and experience the beauty of the Bay of Bengal.",
+      "tourGuides": [
+        {
+          "name": "Amit Choudhury",
+          "experience": "4 years",
+          "language": "English, Bengali",
+          "guideImage": "https://i.ibb.co/2PxxsT8/amit-choudhury.jpg"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co/CvV3bzF/bagerhat.jpg",
+      "tourType": "Historical",
+      "tripTitle": "Bagerhat Ancient City",
+      "price": "$350",
+      "tourPlan": [
+        "Day 1: Arrival in Bagerhat",
+        "Day 2: Explore the historic mosques",
+        "Day 3: Visit the Bagerhat Museum",
+        "Day 4: Departure"
+      ],
+      "aboutTour": "Step back in time and explore the UNESCO World Heritage Site of Bagerhat, known for its historic mosques.",
+      "tourGuides": [
+        {
+          "name": "Kamal Hasan",
+          "experience": "3 years",
+          "language": "English, Bengali",
+          "guideImage": "https://i.ibb.co/F0RGCMN/kamal-hasan.jpg"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co/jZ2J75h/srimangal.jpg",
+      "tourType": "Wildlife",
+      "tripTitle": "Srimangal Tea Gardens & Wildlife",
+      "price": "$600",
+      "tourPlan": [
+        "Day 1: Arrival in Srimangal",
+        "Day 2: Explore tea gardens",
+        "Day 3: Wildlife tour in Lawachara National Park",
+        "Day 4: Departure"
+      ],
+      "aboutTour": "Discover the lush tea gardens and diverse wildlife in the scenic town of Srimangal.",
+      "tourGuides": [
+        {
+          "name": "Arunima Das",
+          "experience": "5 years",
+          "language": "English, Bengali",
+          "guideImage": "https://i.ibb.co/4T3KVTb/arunima-das.jpg"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "image": "https://i.ibb.co/XbJhDCy/bandarban.jpg",
+      "tourType": "Adventure",
+      "tripTitle": "Bandarban Hill Tracks Expedition",
+      "price": "$750",
+      "tourPlan": [
+        "Day 1: Arrival in Bandarban",
+        "Day 2: Trekking in the hill tracks",
+        "Day 3: Visit waterfalls",
+        "Day 4: Departure"
+      ],
+      "aboutTour": "Embark on an adventurous journey through the picturesque hill tracks of Bandarban.",
+      "tourGuides": [
+        {
+          "name": "Sanjay Sharma",
+          "experience": "6 years",
+          "language": "English, Bengali, Hindi",
+          "guideImage": "https://i.ibb.co/0FjnQDb/sanjay-sharma.jpg"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "image": "https://i.ibb.co/0Chy2kx/barisal.jpg",
+      "tourType": "Cruise",
+      "tripTitle": "Barisal Backwater Cruise",
+      "price": "$450",
+      "tourPlan": [
+        "Day 1: Arrival in Barisal",
+        "Day 2: Enjoy a leisurely backwater cruise",
+        "Day 3: Explore local villages",
+        "Day 4: Departure"
+      ],
+      "aboutTour": "Experience the tranquility of the backwaters in Barisal and explore the charm of local village life.",
+      "tourGuides": [
+        {
+          "name": "Kavita Singh",
+          "experience": "3 years",
+          "language": "English, Bengali, Hindi",
+          "guideImage": "https://i.ibb.co/WxDJzPM/kavita-singh.jpg"
+        }
+      ]
+    }
+  ]
+  
