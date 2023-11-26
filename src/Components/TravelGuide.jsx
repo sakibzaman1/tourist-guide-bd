@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TravelGuide = ({ tourPackage }) => {
   const { tourGuides } = tourPackage;
@@ -35,7 +36,7 @@ const TravelGuide = ({ tourPackage }) => {
           </td>
           <td>{guide.language}</td>
           <th>
-            <button className="btn btn-ghost btn-xs">details</button>
+            <Link to={`/guideDetails/${guide.name}`}><button className="btn btn-ghost btn-xs">details</button></Link>
           </th>
         </tr>
       ))}

@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { motion } from "framer-motion"
 
 const TourType = () => {
+  const {goToTop} = useContext(AuthContext);
   const [tourPackages, setTourPackages] = useState([]);
 
   useEffect(() => {
@@ -15,11 +18,11 @@ const TourType = () => {
 
     <div className="hero min-h-screen" style={{backgroundImage: 'url(https://i.ibb.co/hZqpjGt/bd.jpg)'}}>
   <div className="hero-overlay bg-opacity-40"></div>
-  <h1 className="text-center text-3xl font-Ephesis text-white py-6">Find a Tour</h1>
-  <div className="grid grid-cols-4 gap-6 p-6">
-      {tourPackages.map((tour) => (
-        <div>
-         <Link>
+  <h1 className="text-center text-3xl font-Ephesis text-white py-6 hidden lg:flex">Find a Tour</h1>
+  <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 p-6">
+      {tourPackages?.map((tour) => (
+        <motion.div whileHover={{ scale: 1.2 }}>
+         <Link onClick={goToTop} to={`/typeOfTour/${tour?.tourType}`}>
          <div className="card relative rounded-full">
             <figure>
               <img className="h-44 "
@@ -32,7 +35,7 @@ const TourType = () => {
             </div>
           </div>
          </Link>
-        </div>
+        </motion.div>
       ))}
     </div>
 </div>

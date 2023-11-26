@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaHeart  } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { motion } from "framer-motion"
 
 const TourPackageCard = ({tourPackage}) => {
 
-
+  const {goToTop} = useContext(AuthContext);
 const {id, image, tourType, tripTitle, tourPlan, price, aboutTour, tourGuides} = tourPackage;
 
   return (
-    <div>
+    <motion.div whileHover={{ scale: 0.9 }} className="cursor-pointer">
       <div className="card bg-base-100 shadow-2xl">
         <figure>
           <img className="h-56 w-full"
@@ -24,12 +26,12 @@ const {id, image, tourType, tripTitle, tourPlan, price, aboutTour, tourGuides} =
           
           <div className="card-actions items-center justify-end mt-10">
           <p className="h-10 text-2xl">$ <span className="font-Ephesis text-2xl text-green-600 font-bold">{price}</span></p>
-            <Link to={`/packageDetails/${id}`}><div className="badge badge-outline mr-2">View Package</div></Link>
-            <div><Link><FaHeart  size={20} color="red"></FaHeart ></Link></div>
+            <Link onClick={goToTop} to={`/packageDetails/${id}`}><div className="badge badge-outline mr-2 hover:scale-x-110 transition-transform">View Package</div></Link>
+            <div className="hover:scale-110 transition-transform"><Link><FaHeart  size={20} color="red"></FaHeart ></Link></div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
