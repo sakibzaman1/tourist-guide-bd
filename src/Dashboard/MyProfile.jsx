@@ -1,3 +1,5 @@
+import  { useContext } from 'react';
+import { AuthContext } from '../Providers/AuthProvider';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -14,7 +16,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Link } from 'react-router-dom';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,24 +28,23 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+const MyProfile = () => {
 
-const MuiCard = ({story}) => {
+    const {user} = useContext(AuthContext);
 
     const [expanded, setExpanded] = React.useState(false);
-    
 
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
   
     return (
-      <div>
-        <Link>
-        <Card  className='shadow-2xl' sx={{ maxWidth: 345 }}>
+      <div className='flex justify-around w-full ml-20'>
+        <Card className='w-1/2' sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              <img src={story.travelerImage} alt="" />
+              <img src={user?.photoURL} alt="" />
             </Avatar>
           }
           action={
@@ -52,24 +52,23 @@ const MuiCard = ({story}) => {
               <MoreVertIcon />
             </IconButton>
           }
-          
-          title={story.travelerName}
-          subheader={story.date}
+          title={user?.displayName}
+          subheader={user?.email}
         />
         <CardMedia
           component="img"
-          style={{ height: "200px" }} 
-          image={story.visitedPlaceImage}
+          height="194"
+          image={user?.photoURL}
           alt="Paella dish"
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {story.experience}
+            Happy to be a part of Tourist Guide
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
-            <FavoriteIcon className='hover:text-red-600' />
+            <FavoriteIcon />
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon />
@@ -85,34 +84,46 @@ const MuiCard = ({story}) => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph></Typography>
+            
             <Typography paragraph>
-              {story.visitedPlaceName}
+             {user?.displayName}
             </Typography>
-            <Typography paragraph>
-              
-            </Typography>
-            <Typography paragraph>
-              
-            </Typography>
-            <Typography>
-              
-            </Typography>
+           
           </CardContent>
         </Collapse>
       </Card>
-        </Link>
+      <div className='w-1/2'>
+        <h1>Add a Story</h1>
+      <div className="hero w-full bg-base-200">
+  <div className="hero-content">
+    
+    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <form className="card-body">
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Email</span>
+          </label>
+          <input type="email" placeholder="email" className="input input-bordered" required />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Password</span>
+          </label>
+          <input type="password" placeholder="password" className="input input-bordered" required />
+          <label className="label">
+            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+          </label>
+        </div>
+        <div className="form-control mt-6">
+          <button className="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+      </div>
       </div>
     );
 };
 
-export default MuiCard;
-
-/*
-
-https://i.ibb.co/k52JQ04/person1.jpg
-https://i.ibb.co/WPYpWyr/person2.jpg
-https://i.ibb.co/pJGQS9j/person3.jpg
-https://i.ibb.co/Wfv90Qv/person4.jpg
-
-*/ 
+export default MyProfile;

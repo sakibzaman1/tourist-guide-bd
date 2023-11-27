@@ -10,6 +10,13 @@ import AllPackages from '../Pages/AllPackages/AllPackages';
 import TypeOfTour from '../Components/TypeOfTour';
 import ErrorPage from '../Components/ErrorPage/ErrorPage';
 import GuideDetails from '../Components/GuideDetails';
+import AllStories from '../Components/AllStories';
+import Dashboard from '../Dashboard/Dashboard';
+import DashHome from '../Dashboard/DashHome';
+import MyProfile from '../Dashboard/MyProfile';
+import PrivateRoute from '../PrivateRoutes/PrivateRoute';
+import MyBookings from '../Dashboard/MyBookings';
+import MyWishlist from '../Dashboard/MyWishlist';
 
 const router = createBrowserRouter([
     {
@@ -32,21 +39,49 @@ const router = createBrowserRouter([
             {
                 path: '/allPackages',
                 element: <AllPackages></AllPackages>,
-                loader: ()=> fetch(`/tourPackages.json`)
+                loader: ()=> fetch(`http://localhost:5000/packages`)
             },
             {
                 path: '/packageDetails/:id',
                 element: <PackageDetails></PackageDetails>,
-                loader: ()=> fetch(`/tourPackages.json`)
+                loader: ({params})=> fetch(`http://localhost:5000/packages/${params.id}`)
             },
             {
                 path: '/typeOfTour/:type',
                 element: <TypeOfTour></TypeOfTour>,
-                loader: ()=> fetch(`/tourPackages.json`)
+                loader: ()=> fetch(`http://localhost:5000/packages`)
             },
             {
                 path: '/guideDetails/:name',
-                element: <GuideDetails></GuideDetails>
+                element: <GuideDetails></GuideDetails>,
+                loader: ()=> fetch(`http://localhost:5000/guides`)
+            },
+            {
+                path: '/allStories',
+                element: <AllStories></AllStories>,
+                loader: ()=> fetch(`http://localhost:5000/stories`)
+            },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <DashHome></DashHome>
+            },
+            {
+                path: 'myProfile',
+                element: <MyProfile></MyProfile>
+            },
+            {
+                path: 'myBookings',
+                element: <MyBookings></MyBookings>
+            },
+            {
+                path: 'myWishlist',
+                element: <MyWishlist></MyWishlist>
             }
         ]
     }

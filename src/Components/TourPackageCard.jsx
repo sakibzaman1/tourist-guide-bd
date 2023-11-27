@@ -3,14 +3,42 @@ import { FaHeart  } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { motion } from "framer-motion"
+import useWishList from "../CustomHooks/useWishList";
+import useAxiosSecure from "../CustomHooks/useAxiosSecure";
 
 const TourPackageCard = ({tourPackage}) => {
 
-  const {goToTop} = useContext(AuthContext);
-const {id, image, tourType, tripTitle, tourPlan, price, aboutTour, tourGuides} = tourPackage;
+  const [,  refetch] = useWishList();
+  const axiosSecure = useAxiosSecure();
+
+  const {goToTop, user} = useContext(AuthContext);
+const {_id, image, tourType, tripTitle, tourPlan, price, aboutTour, tourGuides} = tourPackage;
+
+const handleAddToWishList = () => {
+  const wishListedPackage = {
+    wishListedId : _id, tripTitle, email : user?.email
+  };
+  console.log(wishListedPackage);
+  axiosSecure.post('/wishList', wishListedPackage)
+              .then(res=> {
+                console.log(res.data);
+                if(res.data.insertedId){
+                  swal({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Added to Wishlist',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 2000
+                });
+                // refetch the bookings
+                refetch();
+                }
+              })
+}
 
   return (
-    <motion.div whileHover={{ scale: 0.9 }} className="cursor-pointer">
+    <motion.div whileHover={{ scale: 0.96 }} className="cursor-pointer">
       <div className="card bg-base-100 shadow-2xl">
         <figure>
           <img className="h-56 w-full"
@@ -26,8 +54,8 @@ const {id, image, tourType, tripTitle, tourPlan, price, aboutTour, tourGuides} =
           
           <div className="card-actions items-center justify-end mt-10">
           <p className="h-10 text-2xl">$ <span className="font-Ephesis text-2xl text-green-600 font-bold">{price}</span></p>
-            <Link onClick={goToTop} to={`/packageDetails/${id}`}><div className="badge badge-outline mr-2 hover:scale-x-110 transition-transform">View Package</div></Link>
-            <div className="hover:scale-110 transition-transform"><Link><FaHeart  size={20} color="red"></FaHeart ></Link></div>
+            <Link onClick={goToTop} to={`/packageDetails/${_id}`}><div className="badge badge-outline mr-2 hover:scale-x-110 transition-transform">View Package</div></Link>
+            <div onClick={handleAddToWishList} className="hover:scale-110 transition-transform"><Link><FaHeart  size={20} color="red"></FaHeart ></Link></div>
           </div>
         </div>
       </div>

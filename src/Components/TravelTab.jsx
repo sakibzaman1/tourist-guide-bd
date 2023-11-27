@@ -12,7 +12,7 @@ const TravelTab = () => {
   const [tourPackages, setTourPackages] = useState([]);
 
   useEffect(() => {
-    fetch(`/tourPackages.json`)
+    fetch(`http://localhost:5000/packages`)
       .then((res) => res.json())
       .then((data) => setTourPackages(data));
   }, []);
@@ -53,7 +53,7 @@ const TravelTab = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10">
             {tourPackages.slice(0, 3).map((tourPackage) => (
               <TourPackageCard
-                key={tourPackage.id}
+                key={tourPackage._id}
                 tourPackage={tourPackage}
               ></TourPackageCard>
             ))}

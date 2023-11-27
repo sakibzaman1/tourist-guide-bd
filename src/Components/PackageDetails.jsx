@@ -1,18 +1,20 @@
 
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import PackageBooking from "./PackageBooking";
 import PackageGallery from "./PackageGallery";
+import { IoPersonCircle } from "react-icons/io5";
 
 const PackageDetails = () => {
 
-const loadedPackages = useLoaderData();
-  const { id } = useParams();
-  console.log(id);
-  const idInt = parseInt(id);
+const loadedPackage = useLoaderData();
+console.log(loadedPackage)
+  // const { id } = useParams();
+  // console.log(id);
+  // const idInt = parseInt(id);
 
-  const filteredPackage = loadedPackages.find((tourPackage) => tourPackage.id === idInt);
+  // const filteredPackage = loadedPackages.find((tourPackage) => tourPackage.id === idInt);
 
-  const {image, image1, image2, image3, tourType, tripTitle, tourPlan, price, aboutTour, tourGuides} = filteredPackage;
+  const {_id, image, image1, image2, image3, tourType, tripTitle, tourPlan, price, aboutTour, tourGuides} = loadedPackage;
 
   const guide = tourGuides[0]?.name;
   
@@ -21,7 +23,7 @@ const loadedPackages = useLoaderData();
   return (
     <div>
       <div>
-        <PackageGallery key={id} image1={image1} image2={image2} image3={image3}></PackageGallery>
+        <PackageGallery key={_id} image1={image1} image2={image2} image3={image3}></PackageGallery>
       </div>
       <div>
       <div
@@ -52,7 +54,10 @@ const loadedPackages = useLoaderData();
                       <h1>Name : {guide.name}</h1>
                       <p>Experience : {guide.experience}</p>
                       <p>Languages : {guide.language}</p>
-                      <p></p>
+                      <div className="flex items-center gap-2 justify-center mt-6">
+                      <IoPersonCircle size={30}></IoPersonCircle>
+                      <Link to={`/guideDetails/${guide.name}`}><button className="btn btn-ghost btn-xl font-mono">Guide details</button></Link>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -61,9 +66,10 @@ const loadedPackages = useLoaderData();
           </div>
         <div>
           <PackageBooking
-            key={id}
+            key={_id}
             price={price}
             guide={guide}
+            tripTitle={tripTitle}
           ></PackageBooking>
         </div>
       </div>
