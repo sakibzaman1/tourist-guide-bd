@@ -4,10 +4,38 @@ import { CiDollar } from "react-icons/ci";
 import { GiCancel } from "react-icons/gi";
 import { MdPublishedWithChanges } from "react-icons/md";
 import { FaAngleDoubleDown } from "react-icons/fa";
+import swal from 'sweetalert';
+import useAxiosSecure from '../CustomHooks/useAxiosSecure';
 
 const MyBookings = () => {
 
-    const [bookings] = useBookings();
+    const [bookings, refetch] = useBookings();
+    const axiosSecure = useAxiosSecure();
+
+    const handleDelete = id => {
+        console.log(id);
+        swal({
+            title: "Please Confirm!",
+            text: "Are you sure to delete?",
+            icon: "warning",
+            dangerMode: true,
+          })
+          .then(isConfirmed => {
+            if (isConfirmed) {
+               axiosSecure.delete(`/bookings/${id}`)
+               .then(res=> {
+                if(res.data.deletedCount > 0){
+                    refetch();
+                    swal('Trip Canceled')
+                }
+               })
+             
+            } else{
+              swal("Not Canceled");
+    
+            }
+          });
+    }
 
 
     return (
@@ -47,7 +75,7 @@ const MyBookings = () => {
 </details>
             </td> 
         <td><CiDollar size={20} color='black'></CiDollar></td>
-        <td><GiCancel size={20} color='red'></GiCancel></td>
+        <td><button onClick={()=> handleDelete(booking?._id)}><GiCancel size={20} color='red'></GiCancel></button></td>
         <td><MdPublishedWithChanges size={20} color='green'></MdPublishedWithChanges></td>
       </tr>
         ))

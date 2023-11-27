@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../Layouts/MainLayout';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
@@ -64,11 +64,15 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/dashboard',
+        path: 'dashboard',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
-                path: '/dashboard',
+                path: '', // Empty path for the default route
+                element: <Navigate to="userHome" />
+              },
+            {
+                path: 'userHome',
                 element: <DashHome></DashHome>
             },
             {

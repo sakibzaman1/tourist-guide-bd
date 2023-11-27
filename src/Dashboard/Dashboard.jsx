@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import {  NavLink, Outlet } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import useBookings from "../CustomHooks/useBookings";
 import Footer from "../Shared/Footer/Footer";
@@ -18,7 +18,7 @@ const Dashboard = () => {
         <section className="w-[20%]  min-h-screen">
           <ul className="menu bg-slate-200 min-h-screen w-full text-xl space-y-10">
             <li>
-              <Link to="/dashboard">
+              <NavLink to="/dashboard/userHome">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -34,10 +34,10 @@ const Dashboard = () => {
                   />
                 </svg>
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="myProfile">
+              <NavLink to="/dashboard/myProfile">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -53,10 +53,10 @@ const Dashboard = () => {
                   />
                 </svg>
                 My Profile
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="myBookings">
+              <NavLink to="/dashboard/myBookings">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -72,11 +72,11 @@ const Dashboard = () => {
                   />
                 </svg>
                 My Bookings
-                <sup className="text-red-600">{wishListedPackage?.length}</sup>
-              </Link>
+                <sup className="text-red-600">{bookings?.length}</sup>
+              </NavLink>
             </li>
             <li>
-              <Link to="myWishlist">
+              <NavLink to="/dashboard/myWishlist">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -92,8 +92,8 @@ const Dashboard = () => {
                   />
                 </svg>
                 My Wishlist
-                <sup className="text-red-600">{bookings?.length}</sup>
-              </Link>
+                <sup className="text-red-600">{wishListedPackage?.length}</sup>
+              </NavLink>
             </li>
           </ul>
         </section>

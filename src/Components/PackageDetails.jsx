@@ -45,7 +45,7 @@ console.log(loadedPackage)
                     </p>
                   ))}
                 </div>
-                <div className="divider"></div>
+               
                 <hr />
                 <div className="mt-10">
                   <h1 className="text-3xl my-10 font-Ephesis">Tour Guide</h1>
