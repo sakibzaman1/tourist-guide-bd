@@ -60,7 +60,7 @@ const TravelTab = () => {
           </div>
 
           <Link onClick={goToTop} to='/allPackages'>
-            <button className="hover:scale-110 transition-transform bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full px-2 text-xl mt-10">
+            <button className="hover:scale-110 transition-transform bg-gradient-to-r from-green-700 to-green-900 text-white rounded-full px-4 text-lg mt-10">
               All Packages
             </button>
           </Link>

@@ -53,7 +53,7 @@ const MyWishlist = () => {
     <tbody>
       {
         wishListedPackage?.map((wishList, index)=> (
-            <tr>
+            <tr key={wishList?._id}>
         <th>{index+1}</th> 
         <td>{wishList?.tripTitle}</td> 
         <td>{wishList?.email}</td> 

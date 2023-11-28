@@ -23,7 +23,7 @@ const TourType = () => {
     <div className="hero min-h-screen" style={{backgroundImage: 'url(https://i.ibb.co/hZqpjGt/bd.jpg)'}}>
   <div className="hero-overlay bg-opacity-40"></div>
   <h1 className="text-center text-3xl font-Ephesis text-white py-6 hidden lg:flex">Find a Tour</h1>
-  <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 p-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
       {tourPackages?.map((tour) => (
         <motion.div onClick={goToTop} whileHover={{ scale: 1.2 }}>
          <Link to={`/typeOfTour/${tour?.tourType}`}>

@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
     const logOutUser = () => {
         setLoading(true);
         swal({
-            title: '<strong>Logged Out</strong>',
+            title: 'Logged Out!',
             icon: 'info',
             html:
                 'How Was Your Experience?',

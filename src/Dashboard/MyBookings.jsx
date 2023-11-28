@@ -58,7 +58,7 @@ const MyBookings = () => {
     <tbody>
       {
         bookings?.map((booking, index)=> (
-            <tr>
+            <tr key={booking?._id}>
         <th>{index+1}</th> 
         <td>{booking?.tripTitle}</td> 
         <td>{booking?.guide}</td> 

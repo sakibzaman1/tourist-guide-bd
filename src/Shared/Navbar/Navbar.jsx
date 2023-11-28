@@ -71,20 +71,28 @@ const Navbar = () => {
           <img alt="Tailwind CSS Navbar component" src={user? user.photoURL : defaultUser} />
         </div>
       </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-72">
-        
-        <li><Link to="/dashboard">Dashboard</Link></li>
-        <li>
-          <Link className="justify-between">
-            Offer Announcement
-            <span className="badge">New</span>
-          </Link>
-        </li>
-        <li><Link>Setting</Link></li>
-        <div className="divider">{user? 'User' : ''}</div>
-        <li>{user?.displayName}</li>
-        <li>{user?.email}</li>
-        <li><Link><button onClick={handleLogOut}>Logout</button></Link></li>
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-sm w-72">
+        {
+          user?
+
+          <>
+          <li><Link to="/dashboard">Dashboard</Link></li>
+          <li>
+            <Link className="justify-between">
+              Offer Announcement
+              <span className="badge">New</span>
+            </Link>
+          </li>
+          <li><Link>Setting</Link></li>
+          <div className="divider">{user? 'User' : ''}</div>
+          <li>{user?.displayName}</li>
+          <li>{user?.email}</li>
+          <li><Link><button onClick={handleLogOut}>Logout</button></Link></li>
+          </> :
+
+          <><li><h1>Please Login First</h1></li></>
+
+        }
       </ul>
     </div>
   </div>

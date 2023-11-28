@@ -5,12 +5,14 @@ import { FcGoogle } from "react-icons/fc";
 import logo from '../../assets/logos/tourist_Guide-removebg-preview.png'
 import swal from 'sweetalert';
 import { AuthContext } from '../../Providers/AuthProvider';
+import useAxiosPublic from '../../CustomHooks/useAxiosPublic';
 
 const Login = () => {
 
 
     const [showPassword, setShowPassword] = useState(false);
     const [loginError, setLoginError] = useState('');
+    const axiosPublic = useAxiosPublic();
 
     const { loginUser, signInWithGoogle, goToTop } = useContext(AuthContext);
     const location = useLocation();
@@ -47,19 +49,29 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-            .then(() => {
-                swal({
-                    position: 'top-center',
-                    icon: 'success',
-                    title: 'Successfully Signed In',
-                    showConfirmButton: false,
-                    showCancelButton: false,
-                    timer: 2000
-                });
-                // navigate user
-                setTimeout(() => {
-                    navigate(location?.state ? location.state : '/')
-                }, 2000)
+            .then((result) => {
+                // user data entry in database
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+                axiosPublic.post('/users', userInfo)
+                .then(res=> {
+                    console.log(res.data);
+                    swal({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Successfully Signed In',
+                        showConfirmButton: false,
+                        showCancelButton: false,
+                        timer: 2000
+                    });
+                    // navigate user
+                    setTimeout(() => {
+                        navigate(location?.state ? location.state : '/')
+                    }, 2000)
+                })
+               
             })
             .catch((error) => {
                 setLoginError(error.message)
@@ -70,7 +82,7 @@ const Login = () => {
         <div>
             <div className="hero p-10 bg-base-200 font-Roboto">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-right flex flex-col justify-center items-end lg:text-right pl-10 w-[40%]">
+                    <div className="text-center flex flex-col justify-center items-end lg:text-right pl-10 lg:w-[40%]">
                         <img className='w-80' src={logo} alt="" />
                         
                         <p className="py-2 font-Ephesis text-lg">Welcome back!
@@ -78,7 +90,7 @@ const Login = () => {
 
                             Let`s get started!</p>
                     </div>
-                    <div className="card w-[60%] flex-shrink-0 max-w-lg shadow-2xl bg-base-100">
+                    <div className="card lg:w-[60%] flex-shrink-0 max-w-lg shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin} className="card-body">
                         <h1 className="text-5xl font-bold text-center mb-10">Login now!</h1>
                             <div className="form-control">

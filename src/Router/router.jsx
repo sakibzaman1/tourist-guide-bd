@@ -18,6 +18,10 @@ import PrivateRoute from '../PrivateRoutes/PrivateRoute';
 import MyBookings from '../Dashboard/MyBookings';
 import MyWishlist from '../Dashboard/MyWishlist';
 import StoryDetails from '../Components/StoryDetails';
+import ManageUsers from '../Dashboard/AdminPanel/ManageUsers';
+import AddPackage from '../Dashboard/AdminPanel/AddPackage';
+import AdminHome from '../Dashboard/AdminPanel/AdminHome';
+import AdminProfile from '../Dashboard/AdminPanel/AdminProfile';
 
 const router = createBrowserRouter([
     {
@@ -92,6 +96,22 @@ const router = createBrowserRouter([
             {
                 path: 'myWishlist',
                 element: <MyWishlist></MyWishlist>
+            },
+            {
+                path: 'adminHome',
+                element: <AdminHome></AdminHome>
+            },
+            {
+                path: 'manageUsers',
+                element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: 'addPackage',
+                element: <AddPackage></AddPackage>
+            },
+            {
+                path: 'adminProfile',
+                element: <AdminProfile></AdminProfile>
             }
         ]
     }
