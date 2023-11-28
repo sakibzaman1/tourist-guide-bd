@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const TravelGuide = ({ tourPackage }) => {
+
+  const {goToTop} = useContext(AuthContext);
   const { tourGuides } = tourPackage;
   console.log(tourGuides);
   // const [name, experience, guideImage, language] = tourGuides;
@@ -9,7 +12,7 @@ const TravelGuide = ({ tourPackage }) => {
   return (
     <tbody>
       {tourGuides.map((guide) => (
-        <tr>
+        <tr key={guide._id}>
           <th>
             <label>
               <input type="checkbox" className="checkbox" />
@@ -17,14 +20,6 @@ const TravelGuide = ({ tourPackage }) => {
           </th>
           <td>
             <div className="flex items-center gap-3">
-              <div className="avatar">
-                <div className="mask mask-squircle w-12 h-12">
-                  <img
-                    src={guide.guideImage}
-                    alt="Avatar Tailwind CSS Component"
-                  />
-                </div>
-              </div>
               <div>
                 <div className="font-bold">{guide.name}</div>
               </div>
@@ -36,7 +31,7 @@ const TravelGuide = ({ tourPackage }) => {
           </td>
           <td>{guide.language}</td>
           <th>
-            <Link to={`/guideDetails/${guide.name}`}><button className="btn btn-ghost btn-xs">details</button></Link>
+            <Link to={`/guideDetails/${guide.name}`}><button onClick={goToTop} className="btn btn-ghost btn-xs">details</button></Link>
           </th>
         </tr>
       ))}

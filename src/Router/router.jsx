@@ -17,6 +17,7 @@ import MyProfile from '../Dashboard/MyProfile';
 import PrivateRoute from '../PrivateRoutes/PrivateRoute';
 import MyBookings from '../Dashboard/MyBookings';
 import MyWishlist from '../Dashboard/MyWishlist';
+import StoryDetails from '../Components/StoryDetails';
 
 const router = createBrowserRouter([
     {
@@ -39,28 +40,33 @@ const router = createBrowserRouter([
             {
                 path: '/allPackages',
                 element: <AllPackages></AllPackages>,
-                loader: ()=> fetch(`http://localhost:5000/packages`)
+                loader: ()=> fetch(`https://tourist-guide-server-seven.vercel.app/packages`)
             },
             {
                 path: '/packageDetails/:id',
                 element: <PackageDetails></PackageDetails>,
-                loader: ({params})=> fetch(`http://localhost:5000/packages/${params.id}`)
+                loader: ({params})=> fetch(`https://tourist-guide-server-seven.vercel.app/packages/${params.id}`)
             },
             {
                 path: '/typeOfTour/:type',
                 element: <TypeOfTour></TypeOfTour>,
-                loader: ()=> fetch(`http://localhost:5000/packages`)
+                loader: ()=> fetch(`https://tourist-guide-server-seven.vercel.app/packages`)
             },
             {
                 path: '/guideDetails/:name',
                 element: <GuideDetails></GuideDetails>,
-                loader: ()=> fetch(`http://localhost:5000/guides`)
+                loader: ()=> fetch(`https://tourist-guide-server-seven.vercel.app/guides`)
             },
             {
                 path: '/allStories',
                 element: <AllStories></AllStories>,
-                loader: ()=> fetch(`http://localhost:5000/stories`)
+                loader: ()=> fetch(`https://tourist-guide-server-seven.vercel.app/stories`)
             },
+            {
+                path: '/storyDetails/:id',
+                element: <StoryDetails></StoryDetails>,
+                loader: ({params})=> fetch(`https://tourist-guide-server-seven.vercel.app/stories/${params.id}`)
+            }
         ]
     },
     {

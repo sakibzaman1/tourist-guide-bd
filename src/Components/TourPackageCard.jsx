@@ -55,7 +55,7 @@ const handleAddToWishList = () => {
           <div className="card-actions items-center justify-end mt-10">
           <p className="h-10 text-2xl">$ <span className="font-Ephesis text-2xl text-green-600 font-bold">{price}</span></p>
             <Link onClick={goToTop} to={`/packageDetails/${_id}`}><div className="badge badge-outline mr-2 hover:scale-x-110 transition-transform">View Package</div></Link>
-            <div onClick={handleAddToWishList} className="hover:scale-110 transition-transform"><Link><FaHeart  size={20} color="red"></FaHeart ></Link></div>
+            <button  disabled={!user} onClick={handleAddToWishList} className={`${user ? 'hover:scale-110 transition-transform' : 'opacity-50 cursor-not-allowed'}`}><Link><FaHeart  size={20} color="red"></FaHeart ></Link></button>
           </div>
         </div>
       </div>

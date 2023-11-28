@@ -15,6 +15,8 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,6 +32,8 @@ const ExpandMore = styled((props) => {
 
 const MuiCard = ({story}) => {
 
+  const {goToTop} = useContext(AuthContext);
+
     const [expanded, setExpanded] = React.useState(false);
     
 
@@ -39,12 +43,12 @@ const MuiCard = ({story}) => {
   
     return (
       <div>
-        <Link>
+        <Link onClick={goToTop} to={`/storyDetails/${story?._id}`}>
         <Card  className='shadow-2xl' sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              <img src={story.travelerImage} alt="" />
+              <img src={story?.travelerImage} alt="" />
             </Avatar>
           }
           action={
@@ -54,17 +58,17 @@ const MuiCard = ({story}) => {
           }
           
           title={story.travelerName}
-          subheader={story.date}
+          subheader={story?.date}
         />
         <CardMedia
           component="img"
           style={{ height: "200px" }} 
-          image={story.visitedPlaceImage}
+          image={story?.visitedPlaceImage}
           alt="Paella dish"
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {story.experience}
+            {story?.experience}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -87,7 +91,7 @@ const MuiCard = ({story}) => {
           <CardContent>
             <Typography paragraph></Typography>
             <Typography paragraph>
-              {story.visitedPlaceName}
+              {story?.visitedPlaceName}
             </Typography>
             <Typography paragraph>
               

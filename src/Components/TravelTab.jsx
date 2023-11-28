@@ -12,7 +12,7 @@ const TravelTab = () => {
   const [tourPackages, setTourPackages] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/packages`)
+    fetch(`https://tourist-guide-server-seven.vercel.app/packages`)
       .then((res) => res.json())
       .then((data) => setTourPackages(data));
   }, []);
@@ -84,7 +84,7 @@ const TravelTab = () => {
                 </thead>
                 {tourPackages.map((tourPackage) => (
                   <TravelGuide
-                    key={tourPackage.id}
+                    key={tourPackage._id}
                     tourPackage={tourPackage}
                   ></TravelGuide>
                 ))}

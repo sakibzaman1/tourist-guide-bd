@@ -14,8 +14,8 @@ const Dashboard = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <div className="flex">
-        <section className="w-[20%]  min-h-screen">
+      <div className="lg:flex">
+        <section className="lg:w-[20%]  min-h-screen">
           <ul className="menu bg-slate-200 min-h-screen w-full text-xl space-y-10">
             <li>
               <NavLink to="/dashboard/userHome">

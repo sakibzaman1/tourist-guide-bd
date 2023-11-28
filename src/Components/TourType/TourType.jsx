@@ -1,17 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProvider";
+
 import { motion } from "framer-motion"
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const TourType = () => {
-  const {goToTop} = useContext(AuthContext);
+  
+  const {goToTop} = useContext(AuthContext)
   const [tourPackages, setTourPackages] = useState([]);
 
   useEffect(() => {
-    fetch(`/tourPackages.json`)
+    fetch(`https://tourist-guide-server-seven.vercel.app/packages`)
       .then((res) => res.json())
       .then((data) => setTourPackages(data));
   }, []);
+
+  
 
   return (
 
@@ -21,8 +25,8 @@ const TourType = () => {
   <h1 className="text-center text-3xl font-Ephesis text-white py-6 hidden lg:flex">Find a Tour</h1>
   <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 p-6">
       {tourPackages?.map((tour) => (
-        <motion.div whileHover={{ scale: 1.2 }}>
-         <Link onClick={goToTop} to={`/typeOfTour/${tour?.tourType}`}>
+        <motion.div onClick={goToTop} whileHover={{ scale: 1.2 }}>
+         <Link to={`/typeOfTour/${tour?.tourType}`}>
          <div className="card relative rounded-full">
             <figure>
               <img className="h-44 "

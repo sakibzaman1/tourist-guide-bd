@@ -9,7 +9,8 @@ const AllStories = () => {
 
     return (
         <div>
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <h1 className='text-3xl font-Ephesis mb-10'>All The Stories</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {loadedStories?.map((story) => (
           <MuiCard key={story._id} story={story}></MuiCard>
         ))}

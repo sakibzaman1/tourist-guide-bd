@@ -16,6 +16,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import swal from 'sweetalert';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -34,12 +35,51 @@ const MyProfile = () => {
 
     const [expanded, setExpanded] = React.useState(false);
 
+    const handleSubmitStory = (e) => {
+      e.preventDefault();
+      const form = new FormData(e.currentTarget);
+        const travelerName = form.get("name");
+        const travelerImage = form.get("photo");
+        const visitedPlaceName = form.get("visitedPlace");
+        const visitedPlaceImage = form.get("visitedPhoto");
+        const experience = form.get("experience");
+        const date = form.get("date");
+
+        console.log(travelerImage, travelerName, visitedPlaceImage, visitedPlaceName, date, experience);
+
+        const newStory = {travelerImage, travelerName, visitedPlaceImage, visitedPlaceName, date, experience};
+
+        // send data to the server
+
+        fetch('https://tourist-guide-server-seven.vercel.app/stories', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newStory)
+        })
+        .then(res=> res.json())
+        .then(data=> {
+            console.log(data);
+            if(data.insertedId){
+                swal({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Story Added',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 2000
+                });
+            }
+        });
+    }
+
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
   
     return (
-      <div className='flex justify-around w-full ml-20'>
+      <div className='lg:flex justify-around w-full ml-20'>
         <Card className='w-1/2' sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
@@ -93,29 +133,55 @@ const MyProfile = () => {
         </Collapse>
       </Card>
       <div className='w-1/2'>
-        <h1>Add a Story</h1>
+        <h1 className='text-3xl font-Ephesis'>Add a Story</h1>
       <div className="hero w-full bg-base-200">
   <div className="hero-content">
     
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form className="card-body">
+      <form onSubmit={handleSubmitStory} className="card-body">
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Email</span>
+            <span className="label-text">Your Name</span>
           </label>
-          <input type="email" placeholder="email" className="input input-bordered" required />
+          <input name='name' defaultValue={user?.displayName} type="text" placeholder="name" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Password</span>
+            <span className="label-text">Photo URL</span>
           </label>
-          <input type="password" placeholder="password" className="input input-bordered" required />
+          <input defaultValue={user?.photoURL}  readOnly name='photo' type="text" placeholder="photo" className="input input-bordered" required />
+        
+        </div>
+        <div className="form-control">
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+            <span className="label-text">Your Visited Place</span>
           </label>
+          <input name='visitedPlace' type="text" placeholder="visited place" className="input input-bordered" required />
+        
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Visited Place Photo URL</span>
+          </label>
+          <input name='visitedPhoto' type="text" placeholder="photo" className="input input-bordered" required />
+        
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Your Experience</span>
+          </label>
+          <input name='experience' type="text" placeholder="experience" className="input input-bordered" required />
+        
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Visited Place Photo URL</span>
+          </label>
+          <input name='date' type="date" placeholder="date" className="input input-bordered" required />
+        
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn text-white hover:bg-green-600 bg-green-500">Add to Story</button>
         </div>
       </form>
     </div>

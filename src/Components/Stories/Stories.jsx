@@ -9,14 +9,14 @@ const Stories = () => {
   const [stories, setStories] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/stories`)
+    fetch(`https://tourist-guide-server-seven.vercel.app/stories`)
       .then((res) => res.json())
       .then((data) => setStories(data));
   }, []);
 
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-6">
         {stories.slice(0, 4).map((story) => (
           <MuiCard key={story._id} story={story}></MuiCard>
         ))}
