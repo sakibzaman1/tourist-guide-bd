@@ -15,6 +15,7 @@ const ManageUsers = () => {
             return res.data;
         }
     });
+    // console.log(localStorage.getItem('access-token'))
 
     const handleMakeAdmin = id => {
         axiosSecure.patch(`/users/admin/${id}`)

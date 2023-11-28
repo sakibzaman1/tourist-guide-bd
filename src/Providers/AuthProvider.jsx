@@ -5,13 +5,17 @@ import app from "../Firebase/firebase.config";
 // import SweetAlert2 from "react-sweetalert2";
 
 import swal from "sweetalert";
+import useAxiosPublic from "../CustomHooks/useAxiosPublic";
 
 const auth = getAuth(app);
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 
+
 const AuthProvider = ({ children }) => {
+
+    const axiosPublic = useAxiosPublic();
 
     const [loading, setLoading] = useState(true);
 
@@ -84,6 +88,20 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            if(currentUser){
+                // Get token and store client side
+                const userInfo = {email: currentUser.email};
+                axiosPublic.post('/jwt', userInfo)
+                .then(res=> {
+                    if(res.data.token){
+                        localStorage.setItem('access-token', res.data.token)
+                    }
+                })
+            }
+            else{
+                // Do something
+                localStorage.removeItem('access-token')
+            }
             setLoading(false);
             console.log("observing current user", currentUser)
         });

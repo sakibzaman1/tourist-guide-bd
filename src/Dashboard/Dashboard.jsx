@@ -4,12 +4,13 @@ import Navbar from "../Shared/Navbar/Navbar";
 import useBookings from "../CustomHooks/useBookings";
 import Footer from "../Shared/Footer/Footer";
 import useWishList from "../CustomHooks/useWishList";
+import useAdmin from "../CustomHooks/useAdmin";
 
 const Dashboard = () => {
   const [bookings] = useBookings();
   const [wishListedPackage] = useWishList();
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div>
