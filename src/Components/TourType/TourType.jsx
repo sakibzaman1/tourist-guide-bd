@@ -25,17 +25,17 @@ const TourType = () => {
   <h1 className="text-center text-3xl font-Ephesis text-white py-6 hidden lg:flex">Find a Tour</h1>
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
       {tourPackages?.map((tour) => (
-        <motion.div onClick={goToTop} whileHover={{ scale: 1.2 }}>
+        <motion.div key={tour?._id} onClick={goToTop} whileHover={{ scale: 1.2 }}>
          <Link to={`/typeOfTour/${tour?.tourType}`}>
          <div className="card relative rounded-full">
             <figure>
               <img className="h-44 "
-                src={tour.image}
+                src={tour?.image}
                 alt="Shoes"
               />
             </figure>
             <div className="card-body absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <h2 className="card-title my-auto mx-auto text-white">{tour.tourType}</h2>
+              <h2 className="card-title my-auto mx-auto text-white">{tour?.tourType}</h2>
             </div>
           </div>
          </Link>

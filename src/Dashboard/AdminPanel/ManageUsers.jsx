@@ -2,11 +2,16 @@
 import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { GiCancel } from "react-icons/gi";
-import { MdPublishedWithChanges } from "react-icons/md";
+import { MdOutlineEmojiPeople } from "react-icons/md";
+import { MdAdminPanelSettings } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
 import swal from 'sweetalert';
+import { useState } from 'react';
+import { FaUserPlus } from "react-icons/fa6";
 
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
+    const [adminClicked, setAdminClicked] = useState(null)
 
     const { refetch, data: users= []} = useQuery({
         queryKey: ['users'],
@@ -15,7 +20,27 @@ const ManageUsers = () => {
             return res.data;
         }
     });
-    // console.log(localStorage.getItem('access-token'))
+    // console.log(localStorage.getItem('access-token'));
+
+    const handleMakeGuide = id => {
+      console.log(id);
+      axiosSecure.patch(`/users/guide/${id}`)
+      .then(res=> {
+          console.log(res.data);
+          if(res.data.modifiedCount > 0){
+              refetch();
+              // setAdminClicked(id)
+              swal({
+                  position: 'top-center',
+                  icon: 'success',
+                  title: 'That user is an Guide Now',
+                  showConfirmButton: false,
+                  showCancelButton: false,
+                  timer: 2000
+              });
+          }
+      })
+    }
 
     const handleMakeAdmin = id => {
         axiosSecure.patch(`/users/admin/${id}`)
@@ -23,10 +48,11 @@ const ManageUsers = () => {
             console.log(res.data);
             if(res.data.modifiedCount > 0){
                 refetch();
+                setAdminClicked(id)
                 swal({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'You are an Admin Now',
+                    title: 'That user is an Admin Now',
                     showConfirmButton: false,
                     showCancelButton: false,
                     timer: 2000
@@ -60,7 +86,7 @@ const ManageUsers = () => {
           });
     }
 
-
+console.log(adminClicked)
     return (
         <div>
             <div className="overflow-x-auto">
@@ -71,7 +97,8 @@ const ManageUsers = () => {
         <th></th>
         <th>Email</th>
         <th>Name</th>
-        <th>Role</th>
+        <th>Role ( admin )</th>
+        <th>Role ( guide )</th>
         <th>Action</th>
         
       </tr>
@@ -83,8 +110,11 @@ const ManageUsers = () => {
         <th>{index+1}</th>
         <td>{user?.email}</td>
         <td>{user?.name}</td>
-        <td>{ user?.role === 'admin'? <span className='text-green-800 font-bold'>Admin</span> :  <button onClick={()=> handleMakeAdmin(user?._id)}><MdPublishedWithChanges size={20} color='green'></MdPublishedWithChanges></button>}</td>
-        <td><button onClick={()=> handleDelete(user?._id)}><GiCancel size={20} color='red'></GiCancel></button></td>
+        <td>{ user?.role === 'admin'? <span className='flex items-center gap-2'><MdAdminPanelSettings color='green'></MdAdminPanelSettings><p className='text-green-800 font-bold'>Admin</p></span> :  <button className='flex items-center gap-2 bg-slate-200 p-2 rounded-full' onClick={()=> handleMakeAdmin(user?._id)} disabled={user?.role === 'guide' || user?.role === 'admin'}><GrUserAdmin color='green'></GrUserAdmin> <small>Make Admin</small> </button>}</td>
+
+        <td>{user?.role === 'guide'?  <span className='flex items-center gap-2'><MdOutlineEmojiPeople color='blue'></MdOutlineEmojiPeople><p className='text-blue-800 font-bold'>Tour Guide</p></span> : <button className='bg-slate-200 p-2 rounded-full flex items-center gap-2' onClick={()=> handleMakeGuide(user?._id)} disabled={user?.role === 'guide' || user?.role === 'admin'}><FaUserPlus color='blue'></FaUserPlus><small>Make Guide</small></button>}</td>
+
+        <td><button disabled={user?.role === 'admin'} onClick={()=> handleDelete(user?._id)}><GiCancel size={20} color='red'></GiCancel></button></td>
       </tr>
             ))
         }

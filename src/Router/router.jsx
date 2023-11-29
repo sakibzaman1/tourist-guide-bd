@@ -22,6 +22,12 @@ import ManageUsers from '../Dashboard/AdminPanel/ManageUsers';
 import AddPackage from '../Dashboard/AdminPanel/AddPackage';
 import AdminHome from '../Dashboard/AdminPanel/AdminHome';
 import AdminProfile from '../Dashboard/AdminPanel/AdminProfile';
+import Blogs from '../Pages/Blogs/Blogs';
+import Community from '../Pages/Community/Community';
+import About from '../Pages/About/About';
+import Contact from '../Pages/Contact/Contact';
+import GuideProfile from '../Dashboard/GuidePanel/GuideProfile';
+import AssignedTours from '../Dashboard/GuidePanel/AssignedTours';
 
 const router = createBrowserRouter([
     {
@@ -70,6 +76,22 @@ const router = createBrowserRouter([
                 path: '/storyDetails/:id',
                 element: <StoryDetails></StoryDetails>,
                 loader: ({params})=> fetch(`https://tourist-guide-server-seven.vercel.app/stories/${params.id}`)
+            },
+            {
+                path: '/blogs',
+                element: <Blogs></Blogs>
+            },
+            {
+                path: '/community',
+                element: <Community></Community>
+            },
+            {
+                path: '/about',
+                element: <About></About>
+            },
+            {
+                path: '/contact',
+                element: <Contact></Contact>
             }
         ]
     },
@@ -112,6 +134,14 @@ const router = createBrowserRouter([
             {
                 path: 'adminProfile',
                 element: <AdminProfile></AdminProfile>
+            },
+            {
+                path: 'guideProfile',
+                element: <GuideProfile></GuideProfile>
+            },
+            {
+                path: 'assignedTours',
+                element: <AssignedTours></AssignedTours>
             }
         ]
     }

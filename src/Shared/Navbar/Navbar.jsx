@@ -30,10 +30,10 @@ const Navbar = () => {
         <>
         
         <NavLink to="/" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><FaHome></FaHome>Home</span></NavLink>
-        <NavLink to="/others" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><IoIosPeople></IoIosPeople>Community</span></NavLink>
-        <NavLink to="/others" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><BiLogoBlogger></BiLogoBlogger>Blogs</span></NavLink>
-        <NavLink to="/others" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><HiMiniInformationCircle></HiMiniInformationCircle>About Us</span></NavLink>
-        <NavLink to="/others" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><MdAddIcCall></MdAddIcCall>Contact Us</span></NavLink>
+        <NavLink to="/community" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><IoIosPeople></IoIosPeople>Community</span></NavLink>
+        <NavLink to="/blogs" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><BiLogoBlogger></BiLogoBlogger>Blogs</span></NavLink>
+        <NavLink to="/about" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><HiMiniInformationCircle></HiMiniInformationCircle>About Us</span></NavLink>
+        <NavLink to="/contact" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><MdAddIcCall></MdAddIcCall>Contact Us</span></NavLink>
         <NavLink to="/login" className={user? `hidden` : `hover:text-gray-900  font-semi-bold navLinks`}><span className='pb-2 flex items-center gap-2'><RiLoginCircleFill></RiLoginCircleFill>Login</span></NavLink>
         <NavLink to="/register" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><FaFileWaveform></FaFileWaveform>Register</span></NavLink>
         
