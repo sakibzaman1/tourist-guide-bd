@@ -26,6 +26,11 @@ and resources for travelers seeking guidance on popular destinations in Banglade
 - There is also a story section which shows the stories made by the previous tourists getting our services. clicking on the story user will see the details of the story and also share those stories on `facebook` and `twitter(X)`  
 - Login and Registration page will be used to be a user.
 - There are three roles in the website -- `Admin`, `Tour Guide`, `Tourist/user`
+- The Dashboard will be different for three of them & they will have different features as per their role.
+- An `user` can see his/her profile, booked items, wishlisted itmes & also can remove them. Also there is a add to story form for adding new stories.
+- An `admin` can also can see profile but he will get the preveilage of seeing the users, manage the users, change the roles of the users as well as he can add new packages.
+- A guide can see his/her profile , add profile details using a form & Assigned tours (in progress)
+- On every activity, Sweet Alert will be seen.
 
 
 ***
