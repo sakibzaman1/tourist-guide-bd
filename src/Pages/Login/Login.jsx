@@ -6,6 +6,7 @@ import logo from '../../assets/logos/tourist_Guide-removebg-preview.png'
 import swal from 'sweetalert';
 import { AuthContext } from '../../Providers/AuthProvider';
 import useAxiosPublic from '../../CustomHooks/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
@@ -80,6 +81,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Tourist Guide BD | LOGIN</title>
+            </Helmet>
             <div className="hero p-10 bg-base-200 font-Roboto">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center flex flex-col justify-center items-end lg:text-right pl-10 lg:w-[40%]">

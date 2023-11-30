@@ -6,6 +6,7 @@ import { MdPublishedWithChanges } from "react-icons/md";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import swal from 'sweetalert';
 import useAxiosSecure from '../CustomHooks/useAxiosSecure';
+import { FcLeft } from "react-icons/fc";
 
 const MyBookings = () => {
 
@@ -68,7 +69,7 @@ const MyBookings = () => {
         <details className="dropdown">
   <summary className="m-1 btn"><FaAngleDoubleDown size={20} color='skyblue'></FaAngleDoubleDown></summary>
   <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100  w-52">
-    <li><a>In Review</a></li>
+    <li><a className='flex items-center gap-2'>In Review<FcLeft></FcLeft></a></li>
     <li><a>Rejected</a></li>
     <li><a>Accepted</a></li>
   </ul>

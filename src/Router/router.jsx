@@ -28,6 +28,7 @@ import About from '../Pages/About/About';
 import Contact from '../Pages/Contact/Contact';
 import GuideProfile from '../Dashboard/GuidePanel/GuideProfile';
 import AssignedTours from '../Dashboard/GuidePanel/AssignedTours';
+import AdminRoute from '../PrivateRoutes/AdminRoute';
 
 const router = createBrowserRouter([
     {
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
             {
                 path: '/guideDetails/:name',
                 element: <GuideDetails></GuideDetails>,
-                loader: ()=> fetch(`https://tourist-guide-server-seven.vercel.app/guides`)
+                loader: ()=> fetch(`https://tourist-guide-server-seven.vercel.app/packages`)
             },
             {
                 path: '/allStories',
@@ -121,19 +122,19 @@ const router = createBrowserRouter([
             },
             {
                 path: 'adminHome',
-                element: <AdminHome></AdminHome>
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
             },
             {
                 path: 'manageUsers',
-                element: <ManageUsers></ManageUsers>
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             },
             {
                 path: 'addPackage',
-                element: <AddPackage></AddPackage>
+                element: <AdminRoute><AddPackage></AddPackage></AdminRoute>
             },
             {
                 path: 'adminProfile',
-                element: <AdminProfile></AdminProfile>
+                element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
             },
             {
                 path: 'guideProfile',

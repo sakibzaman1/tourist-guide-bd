@@ -1,8 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Contact = () => {
     return (
   <div className='bg-slate-100 py-4 px-20'>
+    <Helmet>
+                <title>Tourist Guide BD | CONTACT</title>
+            </Helmet>
           <div className="container mx-auto mt-8">
     <h1 className="text-3xl font-bold text-blue-500 mb-4">Contact Tourist Guide</h1>
     

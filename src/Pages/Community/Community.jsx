@@ -1,8 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Community = () => {
     return (
         <div className='bg-slate-100 py-4 px-10'>
+            <Helmet>
+                <title>Tourist Guide BD | COMMUNITY</title>
+            </Helmet>
             <div className="container mx-auto mt-8">
     <h1 className="text-3xl font-bold text-blue-500 mb-4">Welcome to the Tourist Guide Community!</h1>
     <p className="text-gray-700 mb-4">Discover and share your travel experiences with fellow explorers in the Tourist Guide community. Whether you're a seasoned traveler or planning your first adventure, this is the place to connect, learn, and inspire.</p>

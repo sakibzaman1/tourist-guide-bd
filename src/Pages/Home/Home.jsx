@@ -3,6 +3,7 @@ import Banner from '../../Components/banner';
 import TravelTab from '../../Components/TravelTab';
 import TourType from '../../Components/TourType/TourType';
 import Stories from '../../Components/Stories/Stories';
+import { Helmet } from 'react-helmet-async';
 // import TourType from '../../Components/TourType/TourType';
 
 
@@ -10,6 +11,9 @@ import Stories from '../../Components/Stories/Stories';
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>Tourist Guide BD | HOME</title>
+            </Helmet>
             <section>
                 <Banner></Banner>
             </section>

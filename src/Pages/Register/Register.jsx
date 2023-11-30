@@ -6,6 +6,7 @@ import logo from "../../assets/logos/tourist_Guide-removebg-preview.png";
 import swal from "sweetalert";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosPublic from "../../CustomHooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser, updateUser, goToTop } = useContext(AuthContext);
@@ -108,6 +109,9 @@ const Register = () => {
 
   return (
     <div className="">
+      <Helmet>
+                <title>Tourist Guide BD | REGISTRATION</title>
+            </Helmet>
       <div className="hero p-10 bg-base-200">
         <div className="hero-content flex-col lg:flex-row justify-between">
           <div className=" flex flex-col justify-center items-end text-center lg:text-right lg:pl-10 lg:w-[40%]">

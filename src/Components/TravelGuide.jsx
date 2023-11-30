@@ -21,17 +21,18 @@ const TravelGuide = ({ tourPackage }) => {
           <td>
             <div className="flex items-center gap-3">
               <div>
-                <div className="font-bold">{guide.name}</div>
+                <div className="font-bold">{guide?.name}</div>
               </div>
             </div>
           </td>
           <td>
-            {guide.experience}
+            {guide?.experience}
             <br />
           </td>
-          <td>{guide.language}</td>
+          <td>{guide?.language}</td>
           <th>
-            <Link to={`/guideDetails/${guide.name}`}><button onClick={goToTop} className="btn btn-ghost btn-xs">details</button></Link>
+            <Link to={`/guideDetails/${guide?.name}`}><button onClick={goToTop} className="btn btn-ghost btn-xs">details</button></Link>
+            {/* <button onClick={goToTop} className="btn btn-ghost btn-xs">details</button> */}
           </th>
         </tr>
       ))}

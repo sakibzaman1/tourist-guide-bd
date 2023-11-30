@@ -59,12 +59,12 @@ const AddPackage = () => {
     <div>
       <div className="hero  bg-base-200">
         <div className="hero-content w-full">
-          <div className="card shrink-0 w-full max-w-2xl shadow-2xl bg-base-100">
+          <div className="card shrink-0 w-full max-w-2xl shadow-2xl bg-slate-200">
             <form onSubmit={handleAddPackage} className="card-body">
-              <h1>Add a Package</h1>
+              <h1 className="font-Ephesis text-4xl">Add a Package</h1>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Image URL</span>
+                  <span className="label-text">Package Image URL</span>
                 </label>
                 <input
                   name="image"
@@ -74,6 +74,7 @@ const AddPackage = () => {
                   required
                 />
               </div>
+              <div className="divider">Gallery Image</div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Image 1 URL</span>
@@ -110,6 +111,7 @@ const AddPackage = () => {
                   required
                 />
               </div>
+              <div className="divider">Tour Details</div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Tour Type</span>
@@ -146,9 +148,10 @@ const AddPackage = () => {
                   required
                 />
               </div>
+              <div className="divider">Tour Plan</div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Tour Plan Day 1</span>
+                  <span className="label-text">Day 1</span>
                 </label>
                 <input
                   name="day1"
@@ -158,21 +161,22 @@ const AddPackage = () => {
                   required
                 />
               </div>
+              
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Tour Plan Day 2</span>
+                  <span className="label-text">Day 2</span>
                 </label>
                 <input
                   name="day2"
                   type="text"
-                  placeholder="day4"
+                  placeholder="day2"
                   className="input input-bordered"
                   required
                 />
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Tour Plan Day 3</span>
+                  <span className="label-text">Day 3</span>
                 </label>
                 <input
                   name="day3"
@@ -184,7 +188,7 @@ const AddPackage = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Tour Plan Day 4</span>
+                  <span className="label-text">Day 4</span>
                 </label>
                 <input
                   name="day4"
@@ -194,6 +198,7 @@ const AddPackage = () => {
                   required
                 />
               </div>
+              <div className="divider">About Tour</div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">About Tour</span>
@@ -206,6 +211,7 @@ const AddPackage = () => {
                   required
                 />
               </div>
+              <div className="divider">Guide Section</div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Guide Name ( Unique field )</span>
