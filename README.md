@@ -5,7 +5,7 @@ and resources for travelers seeking guidance on popular destinations in Banglade
 
 ## Live Site Link `Netlify` : [ Tourist Guide bd ](https://tourist-guide-sakib.netlify.app/)
 
-<i>Please consider hitting refresh after creating a new user if the `DashBoard` keeps loading.
+_Please consider hitting refresh after creating a new user if the `DashBoard` keeps loading._
 
 ***
 
