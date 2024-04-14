@@ -42,13 +42,13 @@ console.log(loadedPackage)
 
   return (
     <div>
-      <div>
+      <div className="px-6 mx-auto w-full">
         <PackageGallery key={_id} image1={image1} image2={image2} image3={image3}></PackageGallery>
       </div>
       <div>
       <div
             
-            className="hero min-h-screen bg-base-200 "
+            className="hero min-h-screen bg-base-200 text-center"
             style={{ backgroundImage: ` url(${image})` }}
           >
             <div className="hero-overlay bg-opacity-40"></div>

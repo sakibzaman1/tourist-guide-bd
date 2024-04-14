@@ -5,7 +5,7 @@ import Footer from '../Shared/Footer/Footer';
 
 const MainLayout = () => {
     return (
-        <div className='max-w-7xl font-Roboto'>
+        <div className='max-w-7xl mx-auto font-Roboto'>
             <section>
                 <Navbar></Navbar>
             </section>

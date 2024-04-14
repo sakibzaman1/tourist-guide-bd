@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 import { AuthContext } from '../../Providers/AuthProvider';
 import useAxiosPublic from '../../CustomHooks/useAxiosPublic';
 import { Helmet } from 'react-helmet-async';
+import bgImage from '../../assets/Banner/sundarban.jpg'
 
 const Login = () => {
 
@@ -84,28 +85,34 @@ const Login = () => {
             <Helmet>
                 <title>Tourist Guide BD | LOGIN</title>
             </Helmet>
-            <div className="hero p-10 bg-base-200 font-Roboto">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center flex flex-col justify-center items-end lg:text-right pl-10 lg:w-[40%]">
-                        <img className='w-80' src={logo} alt="" />
+            <div className="hero lg:px-10 bg-base-200 font-Roboto text-white" style={{ 
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover', // This property makes the background image cover the entire container
+            backgroundPosition: 'center', // This property centers the background image
+            backgroundRepeat: 'no-repeat', // This property prevents the background image from repeating
+        }}>
+            
+                <div className="hero-content flex-col-reverse lg:flex-row-reverse">
+                    <div className="text-center flex flex-col justify-center lg:items-end lg:text-right lg:pl-10 lg:w-[40%]">
+                        <img className='w-80 mx-auto' src={logo} alt="" />
                         
                         <p className="py-2 font-Ephesis text-lg">Welcome back!
                             We`re delighted to see you again. Sign in to your account and continue your journey with us. Your access to a world of opportunities and experiences awaits.
 
                             Let`s get started!</p>
                     </div>
-                    <div className="card lg:w-[60%] flex-shrink-0 max-w-lg shadow-2xl bg-base-100">
+                    <div className="card lg:w-[60%] w-[90%] flex-shrink-0 max-w-lg  pt-10 ">
                         <form onSubmit={handleLogin} className="card-body">
-                        <h1 className="text-5xl font-bold text-center mb-10">Login now!</h1>
+                        <h1 className="text-2xl lg:text-5xl font-bold text-center mb-10">Login now!</h1>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text text-gray-400">Email</span>
                                 </label>
                                 <input name="email" type="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-gray-400">Password</span>
                                 </label>
                                 <div className="flex items-center relative">
                                     <input name="password" type={showPassword ? "text" : "password"} placeholder="password" className="input input-bordered w-full" required />
@@ -125,7 +132,7 @@ const Login = () => {
 
 
                             <div className="form-control mt-10">
-                                <button className="h-14 hover:scale-110 transition-transform font-semibold w-full bg-gradient-to-r from-green-900 via-green-700 to-green-200 text-white">Login</button>
+                                <button className="h-14 hover:scale-110 transition-transform font-semibold w-full bg-gradient-to-r from-green-900 via-green-700 to-green-200 text-white rounded-lg">Login</button>
                             </div>
 
                             <div className="flex flex-col justify-between mt-10 mb-6 space-y-6 lg:space-y-0">
@@ -136,7 +143,7 @@ const Login = () => {
                             </div>
 
                             <div className="text-center pt-6">
-                                <small className="font-medium text-black">New to this Website? Please<Link to="/register" className="text-red-700 ml-1"><button onClick={goToTop}>Register</button></Link></small>
+                                <small className="font-medium text-gray-400">New to this Website? Please<Link to="/register" className="text-red-500 ml-1"><button onClick={goToTop}>Register</button></Link></small>
                             </div>
                         </form>
                     </div>

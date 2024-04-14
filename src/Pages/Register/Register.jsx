@@ -7,6 +7,7 @@ import swal from "sweetalert";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosPublic from "../../CustomHooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
+import bgImage from '../../assets/Banner/kuakata.jpg'
 
 const Register = () => {
   const { createUser, updateUser, goToTop } = useContext(AuthContext);
@@ -112,10 +113,15 @@ const Register = () => {
       <Helmet>
                 <title>Tourist Guide BD | REGISTRATION</title>
             </Helmet>
-      <div className="hero p-10 bg-base-200">
-        <div className="hero-content flex-col lg:flex-row justify-between">
+      <div className="hero lg:px-10 bg-base-200" style={{ 
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover', // This property makes the background image cover the entire container
+            backgroundPosition: 'center', // This property centers the background image
+            backgroundRepeat: 'no-repeat', // This property prevents the background image from repeating
+        }}>
+        <div className="hero-content flex-col-reverse lg:flex-row justify-between">
           <div className=" flex flex-col justify-center items-end text-center lg:text-right lg:pl-10 lg:w-[40%]">
-            <img className="w-80" src={logo} alt="" />
+            <img className="w-80 mx-auto" src={logo} alt="" />
 
             <p className="py-2 font-Ephesis text-lg">
               We are thrilled to have you join us. Sign up now and unlock a
@@ -124,9 +130,9 @@ const Register = () => {
               begins here. Let`s get started!
             </p>
           </div>
-          <div className="card lg:w-[60%] flex-shrink-0 max-w-lg shadow-2xl bg-base-100">
+          <div className="card pt-10 lg:w-[60%] w-[90%] flex-shrink-0 max-w-lg shadow-2xl ">
             <form onSubmit={handleRegister} className="card-body">
-              <h1 className="text-5xl font-bold text-center mb-10">
+              <h1 className="text-2xl lg:text-5xl font-bold text-center mb-10">
                 Register Now!
               </h1>
               <div className="form-control">
@@ -204,11 +210,11 @@ const Register = () => {
                   required
                 />{" "}
                 {isDisabled ? (
-                  <span className="text-red-900 pl-3 font-semibold">
+                  <span className="text-red-400 pl-3 text-sm font-semibold">
                     Please Accept Our Terms & Conditions*
                   </span>
                 ) : (
-                  <span className="text-green-900 pl-3 font-semibold">
+                  <span className="text-green-900 pl-3 text-sm font-semibold">
                     Terms & Conditions Accepted
                   </span>
                 )}

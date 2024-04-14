@@ -24,7 +24,7 @@ import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 const Banner = () => {
     return (
-        <>
+        <div className=''>
           <Swiper
             spaceBetween={30}
             effect={'fade'}
@@ -37,25 +37,28 @@ const Banner = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <img className='min-h-screen w-full' src={sundarban} />
+              <img className='lg:min-h-screen w-full' src={sundarban} />
             </SwiperSlide>
             <SwiperSlide>
-              <img className='min-h-screen w-full' src={sajek} />
+              <img className='lg:min-h-screen w-full' src={sajek} />
             </SwiperSlide>
             <SwiperSlide>
-              <img className='min-h-screen w-full' src={sunamganj} />
+              <img className='lg:min-h-screen w-full' src={sunamganj} />
             </SwiperSlide>
             <SwiperSlide>
-              <img className='min-h-screen w-full' src={kuakata} />
+              <img className='lg:min-h-screen w-full' src={kuakata} />
             </SwiperSlide>
             <SwiperSlide>
-              <img className='min-h-screen w-full' src={coxs_bazar} />
+              <img className='lg:min-h-screen w-full' src={coxs_bazar} />
             </SwiperSlide>
             {/* <SwiperSlide>
               <img className='min-h-screen w-full' src={rangamati} />
             </SwiperSlide> */}
           </Swiper>
-        </>
+          {/* <div>
+            <h1 className=''>Tourist Guide</h1>
+          </div> */}
+        </div>
       );
 };
 

@@ -18,8 +18,10 @@ const StoryDetails = () => {
 
     return (
         <div className='bg-base-200'>
-            <h1 className='text-black font-Ephesis text-5xl mb-4 pt-10'>{loadedStory?.visitedPlaceName}</h1>
+            <div className='px-10'>
+            <h1 className='text-black font-Ephesis text-5xl mb-4 '>{loadedStory?.visitedPlaceName}</h1>
             <small className='mb-6'>{loadedStory?.date}</small>
+            </div>
            <div className="hero">
             
   <div className="hero-content flex-col lg:flex-row-reverse gap-10">
@@ -27,7 +29,7 @@ const StoryDetails = () => {
     <img src={loadedStory?.visitedPlaceImage} className="max-w-sm rounded-lg shadow-2xl" />
     <div>
     <div className="avatar mb-4 online">
-  <div className="w-24 rounded-full">
+  <div className="lg:w-24 w-10 rounded-full">
     <img src={loadedStory?.travelerImage} />
   </div>
 </div>

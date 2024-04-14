@@ -41,7 +41,7 @@ const Navbar = () => {
     )
 
     return (
-<div className='max-w-7xl mx-auto bg-gradient-to-r from-slate-100 to-slate-200 mb-10'>
+<div className='max-w-7xl mx-auto bg-gradient-to-r from-slate-100 to-slate-200 mb-0'>
 <div className="navbar">
   <div className="navbar-start mr-12">
     <div className="dropdown">
