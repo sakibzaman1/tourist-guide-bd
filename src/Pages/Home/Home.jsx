@@ -5,6 +5,10 @@ import TourType from '../../Components/TourType/TourType';
 import Stories from '../../Components/Stories/Stories';
 import { Helmet } from 'react-helmet-async';
 // import TourType from '../../Components/TourType/TourType';
+// motion 
+import {motion} from 'framer-motion'
+// variants
+import {fadeIn} from '../../Components/Animation/variants'
 
 
 
@@ -12,23 +16,38 @@ const Home = () => {
     return (
         <div>
             <Helmet>
-                <title>Tourist Guide BD | HOME</title>
+                <title>Smart Campus | HOME</title>
             </Helmet>
             <section>
                 <Banner></Banner>
             </section>
-            <section>
-            <h1 className='mt-20 mb-10 font-Ephesis text-5xl text-center'>Tourism & Travel</h1>
+            <motion.div
+            variants={fadeIn("up", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{once: false,amount: 0.7}}
+            >
+            <h1 className='mt-20 mb-10 font-Ephesis text-5xl text-center'>More About Us</h1>
                 <TravelTab></TravelTab>
-            </section>
-            <section>
-                <h1 className='mt-20 mb-10 font-Ephesis text-5xl text-center'>Tour Types</h1>
+            </motion.div>
+            <motion.div
+            variants={fadeIn("", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{once: false,amount: 0.7}}
+            >
+                <h1 className='mt-20 mb-10 font-Ephesis text-5xl text-center'>Courses We Offer</h1>
                 <TourType></TourType>
-            </section>
-            <section>
-            <h1 className='mt-20 mb-10 font-Ephesis text-5xl text-center'>Travelers Story</h1>
+            </motion.div>
+            <motion.div
+            variants={fadeIn("up", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{once: false,amount: 0.7}}
+            >
+            <h1 className='mt-20 mb-10 font-Ephesis text-5xl text-center'>Success Stories</h1>
             <Stories></Stories>
-            </section>
+            </motion.div>
         </div>
     );
 };

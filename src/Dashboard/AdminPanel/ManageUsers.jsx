@@ -98,7 +98,8 @@ console.log(adminClicked)
         <th>Email</th>
         <th>Name</th>
         <th>Role ( admin )</th>
-        <th>Role ( guide )</th>
+        <th>Role ( Teacher )</th>
+        <th>Role ( Student )</th>
         <th>Action</th>
         
       </tr>
@@ -112,7 +113,19 @@ console.log(adminClicked)
         <td>{user?.name}</td>
         <td>{ user?.role === 'admin'? <span className='flex items-center gap-2'><MdAdminPanelSettings color='green'></MdAdminPanelSettings><p className='text-green-800 font-bold'>Admin</p></span> :  <button className='flex items-center gap-2 bg-slate-200 p-2 rounded-full' onClick={()=> handleMakeAdmin(user?._id)} disabled={user?.role === 'guide' || user?.role === 'admin'}><GrUserAdmin color='green'></GrUserAdmin> <small>Make Admin</small> </button>}</td>
 
-        <td>{user?.role === 'guide'?  <span className='flex items-center gap-2'><MdOutlineEmojiPeople color='blue'></MdOutlineEmojiPeople><p className='text-blue-800 font-bold'>Tour Guide</p></span> : <button className='bg-slate-200 p-2 rounded-full flex items-center gap-2' onClick={()=> handleMakeGuide(user?._id)} disabled={user?.role === 'guide' || user?.role === 'admin'}><FaUserPlus color='blue'></FaUserPlus><small>Make Guide</small></button>}</td>
+        <td>{user?.role === 'guide'?  <span className='flex items-center gap-2'><MdOutlineEmojiPeople color='blue'></MdOutlineEmojiPeople><p className='text-blue-800 font-bold'>Teacher</p></span> : <button className='bg-slate-200 p-2 rounded-full flex items-center gap-2' onClick={()=> handleMakeGuide(user?._id)} disabled={user?.role === 'guide' || user?.role === 'admin'}><FaUserPlus color='blue'></FaUserPlus><small>Make Teacher</small></button>}</td>
+        <td>
+  {user?.role === 'admin' || user?.role === 'guide' ? (
+    <span className='flex items-center gap-2'>
+      <MdOutlineEmojiPeople color='blue' />
+      <p className='text-blue-800 font-bold'>Assigned</p>
+    </span>
+  ) : (
+    <div className='flex items-center gap-2'>
+      <p className='text-green-800 font-bold'>Student</p>
+    </div>
+  )}
+</td>
 
         <td><button disabled={user?.role === 'admin'} onClick={()=> handleDelete(user?._id)}><GiCancel size={20} color='red'></GiCancel></button></td>
       </tr>

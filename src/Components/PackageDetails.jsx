@@ -42,7 +42,7 @@ console.log(loadedPackage)
 
   return (
     <div>
-      <div className="px-6 mx-auto w-full">
+      <div className="px-10 mx-auto flex pt-10">
         <PackageGallery key={_id} image1={image1} image2={image2} image3={image3}></PackageGallery>
       </div>
       <div>

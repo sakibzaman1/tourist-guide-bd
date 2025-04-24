@@ -2,12 +2,12 @@ import React from "react";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BiLowVision, BiShowAlt } from "react-icons/bi";
-import logo from "../../assets/logos/tourist_Guide-removebg-preview.png";
+import logo from "../../assets/logos/smart campus no bg.png";
 import swal from "sweetalert";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosPublic from "../../CustomHooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
-import bgImage from '../../assets/Banner/kuakata.jpg'
+import bgImage from '../../assets/Banner/uni-8.jpg'
 
 const Register = () => {
   const { createUser, updateUser, goToTop } = useContext(AuthContext);
@@ -111,9 +111,9 @@ const Register = () => {
   return (
     <div className="">
       <Helmet>
-                <title>Tourist Guide BD | REGISTRATION</title>
+                <title>Smart Campus | REGISTRATION</title>
             </Helmet>
-      <div className="hero lg:px-10 bg-base-200" style={{ 
+      <div className="hero min-h-screen lg:px-10 bg-base-200" style={{ 
             backgroundImage: `url(${bgImage})`,
             backgroundSize: 'cover', // This property makes the background image cover the entire container
             backgroundPosition: 'center', // This property centers the background image
@@ -123,21 +123,21 @@ const Register = () => {
           <div className=" flex flex-col justify-center items-end text-center lg:text-right lg:pl-10 lg:w-[40%]">
             <img className="w-80 mx-auto" src={logo} alt="" />
 
-            <p className="py-2 font-Ephesis text-lg">
+            <p className="py-2 font-Ephesis text-lg text-white">
               We are thrilled to have you join us. Sign up now and unlock a
               world of possibilities. Experience the best of what we have to
               offer and connect with like-minded individuals. Your journey
               begins here. Let`s get started!
             </p>
           </div>
-          <div className="card pt-10 lg:w-[60%] w-[90%] flex-shrink-0 max-w-lg shadow-2xl ">
+          <div className=" pt-10 lg:w-[60%] w-[90%] flex-shrink-0 max-w-lg shadow-2xl ">
             <form onSubmit={handleRegister} className="card-body">
-              <h1 className="text-2xl lg:text-5xl font-bold text-center mb-10">
+              <h1 className="text-2xl lg:text-5xl font-bold text-center text-white mb-10">
                 Register Now!
               </h1>
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Your Name</span>
+                <label className="label " >
+                  <span className="label-text text-gray-200">Your Name</span>
                 </label>
                 <input
                   name="name"
@@ -149,7 +149,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Photo URL</span>
+                  <span className="label-text text-gray-200">Photo URL</span>
                 </label>
                 <input
                   name="photo"
@@ -162,7 +162,7 @@ const Register = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-gray-200">Email</span>
                 </label>
                 <input
                   name="email"
@@ -174,7 +174,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-gray-200">Password</span>
                 </label>
                 <div className="flex items-center relative">
                   <input
@@ -210,19 +210,19 @@ const Register = () => {
                   required
                 />{" "}
                 {isDisabled ? (
-                  <span className="text-red-400 pl-3 text-sm font-semibold">
+                  <span className="text-red-500 pl-3 text-sm font-mono">
                     Please Accept Our Terms & Conditions*
                   </span>
                 ) : (
-                  <span className="text-green-900 pl-3 text-sm font-semibold">
+                  <span className="text-green-500 pl-3 text-sm font-semibold font-mono">
                     Terms & Conditions Accepted
                   </span>
                 )}
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control mt-6 ">
                 <button
                   disabled={isDisabled}
-                  className={`w-full  font-semibold text-white h-14  ${
+                  className={`w-full  font-semibold text-white h-14 rounded-lg ${
                     isDisabled
                       ? "bg-gray-600"
                       : " bg-gradient-to-r from-green-900 via-green-700 to-green-200  hover:scale-110 transition-transform"
@@ -244,7 +244,7 @@ const Register = () => {
               </div>
 
               <div className="text-center pt-10">
-                <small className="font-medium text-black">
+                <small className="font-medium text-gray-200">
                   Already Have an Account? Please
                   <Link to="/login" className="text-green-900 ml-2 font-bold">
                     <button onClick={goToTop}>Login</button>

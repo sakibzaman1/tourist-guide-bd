@@ -1,104 +1,114 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import logo from '../../assets/logos/tourist_Guide-removebg-preview.png'
-import defaultUser from '../../assets/logos/defaultUser.png'
-import { FaHome } from "react-icons/fa";
-import { MdAddIcCall } from "react-icons/md";
+import { motion } from 'framer-motion';
+import logo from '../../assets/logos/uni-portal-logo.jpg'; // use any student-themed logo
+import defaultUser from '../../assets/logos/defaultUser.png';
+import { FaHome, FaUserGraduate, FaChalkboardTeacher, FaClipboardList, FaFileAlt, FaInfoCircle, FaEnvelope } from "react-icons/fa";
 import { RiLoginCircleFill } from "react-icons/ri";
-import { FaFileWaveform } from "react-icons/fa6";
-import { HiMiniInformationCircle } from "react-icons/hi2";
-import { IoIosPeople } from "react-icons/io";
-import { BiLogoBlogger } from "react-icons/bi";
-import './navbar.css'
+import './navbar.css';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const Navbar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
 
-  const {user, logOutUser} = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOutUser().catch(error => console.log(error.message));
+  };
 
-   // Sign Out Button
+  const navItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
-   const handleLogOut = () => {
-    logOutUser()
-        .then(() => {
-        })
-        .catch(error => console.log(error.message))
-}
+  const navOptions = (
+    <>
+      <motion.div variants={navItemVariants} whileHover={{ scale: 1.1 }}>
+        <NavLink to="/" className="hover:text-gray-900 font-semi-bold navLinks">
+          <span className='pb-2 flex items-center gap-2'><FaHome /> Home</span>
+        </NavLink>
+      </motion.div>
 
+      <motion.div variants={navItemVariants} whileHover={{ scale: 1.1 }}>
+        <NavLink to="/community" className="hover:text-gray-900 font-semi-bold navLinks">
+          <span className='pb-2 flex items-center gap-2'><FaUserGraduate /> Students</span>
+        </NavLink>
+      </motion.div>
 
-    const navOptions = (
-        <>
-        
-        <NavLink to="/" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><FaHome></FaHome>Home</span></NavLink>
-        <NavLink to="/community" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><IoIosPeople></IoIosPeople>Community</span></NavLink>
-        <NavLink to="/blogs" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><BiLogoBlogger></BiLogoBlogger>Blogs</span></NavLink>
-        <NavLink to="/about" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><HiMiniInformationCircle></HiMiniInformationCircle>About Us</span></NavLink>
-        <NavLink to="/contact" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><MdAddIcCall></MdAddIcCall>Contact Us</span></NavLink>
-        <NavLink to="/login" className={user? `hidden` : `hover:text-gray-900  font-semi-bold navLinks`}><span className='pb-2 flex items-center gap-2'><RiLoginCircleFill></RiLoginCircleFill>Login</span></NavLink>
-        <NavLink to="/register" className="hover:text-gray-900  font-semi-bold navLinks"><span className='pb-2 flex items-center gap-2'><FaFileWaveform></FaFileWaveform>Register</span></NavLink>
-        
-        </>
-    )
+      <motion.div variants={navItemVariants} whileHover={{ scale: 1.1 }}>
+        <NavLink to="/blogs" className="hover:text-gray-900 font-semi-bold navLinks">
+          <span className='pb-2 flex items-center gap-2'><FaChalkboardTeacher /> Courses</span>
+        </NavLink>
+      </motion.div>
 
-    return (
-<div className='max-w-7xl mx-auto bg-gradient-to-r from-slate-100 to-slate-200 mb-0'>
-<div className="navbar">
-  <div className="navbar-start mr-12">
-    <div className="dropdown">
-      <label tabIndex={0} className="btn btn-ghost lg:hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52">
-        {navOptions}
-      </ul>
-    </div>
-    <Link to="/">
-    <div  className='flex items-center '>
-      <img className='w-10 lg:w-20' src={logo} alt="" />
-      <h1 className='text-base lg:text-2xl text-bold font-Ephesis'>Tourist Guide <sup><small className='text-xs font-mono'>BD</small></sup></h1>
-    </div>
-    </Link>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 gap-10 text-sm">
-      {navOptions}
-    </ul>
-  </div>
-  <div className="navbar-end w-[25%]">
-  <div className="dropdown dropdown-end">
-      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src={user? user.photoURL : defaultUser} />
+      <motion.div variants={navItemVariants} whileHover={{ scale: 1.1 }}>
+        <NavLink to="/about" className="hover:text-gray-900 font-semi-bold navLinks">
+          <span className='pb-2 flex items-center gap-2'><FaClipboardList /> About Us</span>
+        </NavLink>
+      </motion.div>
+
+      <motion.div variants={navItemVariants} whileHover={{ scale: 1.1 }}>
+        <NavLink to="/contact" className="hover:text-gray-900 font-semi-bold navLinks">
+          <span className='pb-2 flex items-center gap-2'><FaFileAlt /> Contact</span>
+        </NavLink>
+      </motion.div>
+
+      {!user && (
+        <motion.div variants={navItemVariants} whileHover={{ scale: 1.1 }}>
+          <NavLink to="/login" className="hover:text-gray-900 font-semi-bold navLinks">
+            <span className='pb-2 flex items-center gap-2'><RiLoginCircleFill /> Login</span>
+          </NavLink>
+        </motion.div>
+      )}
+
+      <motion.div variants={navItemVariants} whileHover={{ scale: 1.1 }}>
+        <NavLink to="/register" className="hover:text-gray-900 font-semi-bold navLinks">
+          <span className='pb-2 flex items-center gap-2'><FaInfoCircle /> Register</span>
+        </NavLink>
+      </motion.div>
+    </>
+  );
+
+  return (
+    <div className='max-w-8xl mx-auto bg-gradient-to-r from-white to-slate-100 mb-0'>
+      <div className="navbar">
+        <div className="navbar-start mr-12">
+          <Link to="/">
+            <motion.div className='flex items-center gap-2' whileHover={{ scale: 1.05 }}>
+              <img className='w-10 lg:w-16' src={logo} alt="Student Logo" />
+              <h1 className='text-base lg:text-2xl font-bold'>SMART CAMPUS</h1>
+            </motion.div>
+          </Link>
         </div>
-      </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-sm w-72">
-        {
-          user?
 
-          <>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li>
-            <Link className="justify-between">
-              Offer Announcement
-              <span className="badge">New</span>
-            </Link>
-          </li>
-          <li><Link>Setting</Link></li>
-          <div className="divider">{user? 'User' : ''}</div>
-          <li>{user?.displayName}</li>
-          <li>{user?.email}</li>
-          <li><Link><button onClick={handleLogOut}>Logout</button></Link></li>
-          </> :
+        <div className="navbar-center hidden lg:flex">
+          <motion.ul className="menu menu-horizontal px-1 gap-8 text-sm" initial="hidden" animate="visible">
+            {navOptions}
+          </motion.ul>
+        </div>
 
-          <><li><h1>Please Login First</h1></li></>
-
-        }
-      </ul>
+        <div className="navbar-end w-[25%]">
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img alt="User Avatar" src={user ? user.photoURL : defaultUser} />
+              </div>
+            </label>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-sm w-72">
+              {user ? (
+                <>
+                  <li><Link to="/dashboard">Dashboard</Link></li>
+                  <li><Link>Settings</Link></li>
+                  <li><button onClick={handleLogOut}>Logout</button></li>
+                </>
+              ) : (
+                <li><h1>Please Login First</h1></li>
+              )}
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</div>
-    );
+  );
 };
 
 export default Navbar;

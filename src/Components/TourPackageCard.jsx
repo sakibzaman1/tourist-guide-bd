@@ -39,7 +39,7 @@ const handleAddToWishList = () => {
 
   return (
     <motion.div whileHover={{ scale: 0.96 }} className="cursor-pointer">
-      <div className="card bg-base-100 shadow-2xl">
+      <div className="card bg-base-100 shadow-2xl p-10">
         <figure>
           <img className="h-56 w-full"
             src={image}
@@ -54,7 +54,7 @@ const handleAddToWishList = () => {
           
           <div className="card-actions items-center justify-end mt-10">
           <p className="h-10 text-2xl">$ <span className="font-Ephesis text-2xl text-green-600 font-bold">{price}</span></p>
-            <Link onClick={goToTop} to={`/packageDetails/${_id}`}><div className="badge badge-outline mr-2 hover:scale-x-110 transition-transform">View Package</div></Link>
+            <Link onClick={goToTop} to={`/packageDetails/${_id}`}><div className="badge badge-outline mr-2 hover:scale-x-110 transition-transform">View Details</div></Link>
             <button  disabled={!user} onClick={handleAddToWishList} className={`${user ? 'hover:scale-110 transition-transform' : 'opacity-50 cursor-not-allowed'}`}><Link><FaHeart  size={20} color="red"></FaHeart ></Link></button>
           </div>
         </div>

@@ -20,16 +20,16 @@ const TourType = () => {
   return (
 
 
-    <div className="hero min-h-screen" style={{backgroundImage: 'url(https://i.ibb.co/hZqpjGt/bd.jpg)'}}>
-  <div className="hero-overlay bg-opacity-40"></div>
+    <div className="hero min-h-screen" >
+  <div className=""></div>
   <h1 className="text-center text-3xl font-Ephesis text-white py-6 hidden lg:flex">Find a Tour</h1>
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 px-6 py-16" >
       {tourPackages?.map((tour) => (
         <motion.div key={tour?._id} onClick={goToTop} whileHover={{ scale: 1.2 }}>
          <Link to={`/typeOfTour/${tour?.tourType}`}>
-         <div className="card relative rounded-full">
+         <div className="card relative ">
             <figure>
-              <img className="h-44 "
+              <img className="h-80 w-96 "
                 src={tour?.image}
                 alt="Shoes"
               />
@@ -61,3 +61,4 @@ https://i.ibb.co/XbJhDCy/bandarban.jpg
 https://i.ibb.co/0Chy2kx/barisal.jpg
 https://i.ibb.co/jZ2J75h/srimangal.jpg
 */
+// style={{backgroundImage: 'url(https://i.ibb.co/hZqpjGt/bd.jpg)'}}

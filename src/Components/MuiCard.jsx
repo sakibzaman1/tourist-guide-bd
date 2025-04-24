@@ -44,7 +44,7 @@ const MuiCard = ({story}) => {
     return (
       <div>
         <Link onClick={goToTop} to={`/storyDetails/${story?._id}`}>
-        <Card  className='shadow-2xl' sx={{ maxWidth: 345 }}>
+        <Card  className='shadow-2xl h-[400px]' sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import overview from "../assets/videos/overview.mp4";
+import overview from "../assets/videos/uni-vid-1.mp4";
 import TourPackageCard from "./TourPackageCard";
 import TravelGuide from "./TravelGuide";
 import { Link } from "react-router-dom";
@@ -18,12 +18,12 @@ const TravelTab = () => {
   }, []);
 
   return (
-    <div className="mt-20">
+    <div className="mt-20 px-20">
       <Tabs>
         <TabList>
           <Tab>Overview</Tab>
-          <Tab>Our Packages</Tab>
-          <Tab>Meet Our Tour Guides</Tab>
+          <Tab>Our Courses</Tab>
+          <Tab>Meet Our Teachers</Tab>
         </TabList>
 
         <TabPanel>

@@ -44,7 +44,7 @@ const AdminProfile = () => {
     
 
     return (
-        <div className='flex justify-center '>
+        <div className='flex justify-center items-center mt-40'>
              <Card className='w-1/2' sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
@@ -68,7 +68,7 @@ const AdminProfile = () => {
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            Happy to be a part of Tourist Guide
+            Happy to be a part of Smart Campus
           </Typography>
         </CardContent>
         <CardActions disableSpacing>

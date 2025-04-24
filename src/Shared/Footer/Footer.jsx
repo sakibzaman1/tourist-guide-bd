@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/logos/tourist_Guide-removebg-preview.png'
+import logo from '../../assets/logos/smart campus no bg.png'
 
 const Footer = () => {
     return (
@@ -7,7 +7,7 @@ const Footer = () => {
             <footer className="footer p-10 bg-base-200 text-base-content">
   <aside className=''>
   <img className='w-10 lg:w-20' src={logo} alt="" />
-    <p>Tourist Guide Ltd.<br/>Providing reliable Guidance since 1992</p>
+    <p>Smart Campus Ltd.<br/>Providing Reliable Experience since 2016</p>
   </aside> 
   <nav>
     <header className="footer-title">Services</header> 
